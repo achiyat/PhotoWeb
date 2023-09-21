@@ -1,12 +1,9 @@
 import axios from "axios";
 
-export const getPhotoData = async () => {
+export const getPhotoFromAPI = async (endpoint) => {
   try {
-    let endpoint =
-      "https://pixabay.com/api/?key=39525914-9152bde184a13a887fbc35f2b&q=yellow+flowers&image_type=photo&pretty=true";
     let response = await axios.get(endpoint);
-    // console.log(response.data);
-    return response.data;
+    return response.data.hits;
   } catch (error) {
     // Handle the error here
     console.error("Error fetching photo data:", error);
