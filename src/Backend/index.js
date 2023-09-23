@@ -1,8 +1,3 @@
-// import dotenv from "dotenv";
-// import "dotenv/config";
-
-// const apiKey111 = process.env.API_KEY;
-
 const apiKey = "39525914-9152bde184a13a887fbc35f2b"; // Replace with your API key
 
 export const buildApiUrl = async (Word, perPage) => {

@@ -1,11 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { getPhotoFromAPI } from "../../services/services";
 import { buildApiUrl } from "../../Backend";
+import { ModalBox } from "../ModalBox/modalBox";
+import "./searchPhotos.css";
 
 export const SearchPhotos = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
+  // const searchRef = useRef(null);
   const [images, setImages] = useState([]);
   const [perPage, setPerPage] = useState(10);
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Function to open the modal with the selected image
+  const openModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   const fetchImages = async () => {
     try {
@@ -72,9 +87,13 @@ export const SearchPhotos = (props) => {
             alt={image.tags}
             width="200"
             height="150"
+            onClick={() => openModal(image)} // Open the modal when clicked
           />
         ))}
       </main>
+
+      {/* Display the modal when an image is selected */}
+      {selectedImage && <ModalBox image={selectedImage} onClose={closeModal} />}
 
       <footer>
         <button onClick={() => setPerPage((prevPerPage) => prevPerPage + 10)}>
