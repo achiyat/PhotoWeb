@@ -1,4 +1,3 @@
-// console.log(image);
 import React from "react";
 import "./modalBox.css";
 
