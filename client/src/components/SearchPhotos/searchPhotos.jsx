@@ -28,6 +28,7 @@ export const SearchPhotos = (props) => {
         formattedWord,
         perPage
       );
+      // if (response.length !== 0)
       setImages(response);
     } catch (error) {
       console.error("Error fetching photos:", error);

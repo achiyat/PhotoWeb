@@ -1,9 +1,7 @@
-import express, { response } from "express";
+import express from "express";
 import cors from "cors";
 import axios from "axios";
-
 import "dotenv/config";
-import { buildApiUrl } from "./index.js";
 
 const app = express();
 
@@ -13,13 +11,20 @@ app.use(express.json());
 
 const port = process.env.PORT || 8000;
 
-// const pixabayApiKey = process.env.PIXABAY_API_KEY;
-
 app.get("/pixabay/images", async (req, res) => {
   const word = req.query.search;
   const perPage = req.query.perPage;
-  let endpoint = await buildApiUrl(word, perPage);
-  let response = await axios.get(endpoint);
+  const baseUrl = "https://pixabay.com/api/";
+
+  let response = await axios.get(baseUrl, {
+    params: {
+      key: process.env.PIXABAY_API_KEY, // Replace with your API key
+      q: word, // Decode the formatted query
+      image_type: "photo",
+      lang: "en",
+      per_page: perPage,
+    },
+  });
   res.send(response.data.hits);
 });
 
