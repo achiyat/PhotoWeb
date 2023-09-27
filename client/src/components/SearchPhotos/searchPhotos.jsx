@@ -1,14 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getPhotoFromAPI } from "../../services/services";
 import { ModalBox } from "../ModalBox/modalBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./searchPhotos.css";
 
 export const SearchPhotos = (props) => {
   const searchRef = useRef(null);
   const [images, setImages] = useState([]);
   const [perPage, setPerPage] = useState(10);
-
   const [selectedImage, setSelectedImage] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [onOpenApp, setOnOpenApp] = useState(true);
 
   // Function to open the modal with the selected image
   const openModal = (image) => {
@@ -20,15 +24,25 @@ export const SearchPhotos = (props) => {
     setSelectedImage(null);
   };
 
-  const fetchImages = async (word) => {
+  const toggleFavorite = (image) => {
+    const isFavorite = favorites.some((favImage) => favImage.id === image.id);
+
+    if (isFavorite) {
+      setFavorites((prevFavorites) =>
+        prevFavorites.filter((favImage) => favImage.id !== image.id)
+      );
+    } else {
+      setFavorites((prevFavorites) => [...prevFavorites, image]);
+    }
+  };
+
+  const fetchImages = async (word, _perPage) => {
     try {
-      const formattedWord = word.replace(/\s+/g, "+");
       const response = await getPhotoFromAPI(
         `http://localhost:5000/pixabay/images`,
-        formattedWord,
-        perPage
+        word,
+        _perPage
       );
-      // if (response.length !== 0)
       setImages(response);
     } catch (error) {
       console.error("Error fetching photos:", error);
@@ -39,54 +53,82 @@ export const SearchPhotos = (props) => {
     // Reset the images and page when a new search is initiated
     setImages([]);
     setPerPage(10);
+    fetchImages(searchRef.current.value, 10);
+    setShowFavorites(false);
+  };
+
+  const handleShowFavorites = () => {
+    setShowFavorites(true);
+    setImages(favorites);
+  };
+
+  const handleLoadMore = () => {
+    const newPerPage = perPage + 10;
+    setPerPage(newPerPage);
+    fetchImages(searchRef.current.value, newPerPage);
+  };
+
+  const handleBackToImages = () => {
+    fetchImages(searchRef.current.value, perPage);
+    setShowFavorites(false);
   };
 
   useEffect(() => {
-    if (images.length === 0) {
-      console.log("useEffect_1-IN");
-      // Fetch images when the component mounts or when the search term or page changes
-      fetchImages(searchRef.current.value);
-    } else {
-      console.log("useEffect_1-NOT IN");
+    if (showFavorites) {
+      setImages(favorites);
     }
-  }, [images]);
+  }, [favorites]);
 
   useEffect(() => {
-    if (images.length !== 0 && images.length < perPage) {
-      console.log("useEffect_2-IN");
-      // Fetch images when the component mounts or when the search term or page changes
-      fetchImages(searchRef.current.value);
-    } else {
-      console.log("useEffect_2-NOT IN");
+    if (onOpenApp) {
+      fetchImages(searchRef.current.value, perPage);
+      setOnOpenApp(false);
     }
-  }, [perPage]);
+  }, [onOpenApp]);
 
   return (
     <div>
       <header>
         <input ref={searchRef} type="text" placeholder="Search for photos..." />
         <button onClick={handleSearch}>Search</button>
+        <button onClick={handleShowFavorites}>Show Favorites</button>
       </header>
+
       <main>
-        {images.map((image) => (
-          <img
-            key={image.id} // Use image.id as the unique key
-            src={image.webformatURL}
-            alt={image.tags}
-            width="200"
-            height="150"
-            onClick={() => openModal(image)} // Open the modal when clicked
-          />
-        ))}
+        {images.length === 0 && showFavorites ? (
+          <p>No favorite pictures found</p>
+        ) : (
+          images.map((image) => (
+            <div key={image.id} className="image-container">
+              <FontAwesomeIcon
+                icon={faStar}
+                className={`favorite-icon ${
+                  favorites.some((favImage) => favImage.id === image.id)
+                    ? "favorite"
+                    : ""
+                }`}
+                onClick={() => toggleFavorite(image)}
+              />
+              <img
+                src={image.webformatURL}
+                alt={image.tags}
+                width="200"
+                height="150"
+                onClick={() => openModal(image)}
+              />
+            </div>
+          ))
+        )}
       </main>
 
-      {/* Display the modal when an image is selected */}
       {selectedImage && <ModalBox image={selectedImage} onClose={closeModal} />}
 
       <footer>
-        <button onClick={() => setPerPage((prevPerPage) => prevPerPage + 10)}>
-          Load More Images
-        </button>
+        {!showFavorites ? (
+          <button onClick={handleLoadMore}>Load More Images</button>
+        ) : (
+          <button onClick={handleBackToImages}>Back</button>
+        )}
       </footer>
     </div>
   );

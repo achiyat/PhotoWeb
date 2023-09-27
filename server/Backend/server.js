@@ -28,6 +28,8 @@ app.get("/pixabay/images", async (req, res) => {
   res.send(response.data.hits);
 });
 
+// slice
+
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
 });
