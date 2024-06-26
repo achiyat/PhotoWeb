@@ -12,6 +12,7 @@ app.use(express.json());
 const port = process.env.PORT || 8000;
 
 app.get("/pixabay/images", async (req, res) => {
+  console.log(`App geting!`);
   const word = req.query.search;
   const perPage = req.query.perPage;
   const baseUrl = "https://pixabay.com/api/";
@@ -25,6 +26,7 @@ app.get("/pixabay/images", async (req, res) => {
       per_page: perPage,
     },
   });
+  console.log(response.data.hits[0].id);
   res.send(response.data.hits);
 });
 
