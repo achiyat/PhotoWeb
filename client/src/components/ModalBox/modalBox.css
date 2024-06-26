@@ -23,6 +23,15 @@
   position: relative; /* Add position relative for absolute positioning of user info */
 }
 
+.modalBox-image {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  /* width: 400px; */
+  height: 300px;
+  /* width: 100%; */
+}
+
 .modalBox-userInfo {
   display: flex;
   align-items: center;

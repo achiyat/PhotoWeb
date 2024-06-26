@@ -1,3 +1,4 @@
+// App.jsx
 import "./App.css";
 import { SearchPhotos } from "./components/SearchPhotos/searchPhotos";
 
