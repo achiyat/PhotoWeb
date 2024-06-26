@@ -1,4 +1,3 @@
-// searchPhotos.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { getPhotoFromAPI } from "../../services/services";
 import { ModalBox } from "../ModalBox/modalBox";
