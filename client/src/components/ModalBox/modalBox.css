@@ -1,3 +1,4 @@
+/* modalBox.css */
 .modalBox-container {
   display: block; /* Change 'none' to 'block' */
   position: fixed;
@@ -27,9 +28,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
-  /* width: 400px; */
   height: 300px;
-  /* width: 100%; */
 }
 
 .modalBox-userInfo {
