@@ -1,4 +1,3 @@
-// modalBox.jsx
 import React from "react";
 import "./modalBox.css";
 
@@ -20,10 +19,8 @@ export const ModalBox = ({ image, onClose }) => {
           <img
             src={image.webformatURL}
             alt={image.tags}
-            className="modalBox-image"
-            style={{
-              width: image.webformatHeight > 600 ? "400px" : "100%",
-            }}
+            width="400"
+            height="300"
             onClick={openImageURL} // Open the image URL in a new tab
           />
           <div className="modalBox-userInfo">
