@@ -1,12 +1,21 @@
-header {
+/* searchPhotos.css */
+.searchPhotos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.searchPhotos-header {
   background-color: #333;
-  padding: 10px;
+  padding: 10px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-input {
+.searchPhotos-input {
   padding: 5px;
   font-size: 20px;
   border: none;
@@ -15,7 +24,7 @@ input {
   width: 50vh;
 }
 
-button {
+.searchPhotos-button {
   padding: 5px 10px;
   background-color: #007bff;
   color: #fff;
@@ -26,18 +35,28 @@ button {
   margin-right: 10px;
 }
 
-main {
-  display: flex;
-  flex-wrap: wrap;
+.searchPhotos-main {
+  display: grid;
+  grid-gap: 10px;
+  width: 98%;
+  padding: 10px 0px;
   justify-content: center;
 }
 
-.image-container {
+.searchPhotos-imageContainer {
   position: relative;
-  margin: 10px;
+  overflow: hidden;
 }
 
-.favorite-icon {
+.searchPhotos-image {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  height: 250px;
+}
+
+.searchPhotos-favoriteIcon {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -46,27 +65,113 @@ main {
   cursor: pointer;
 }
 
-.favorite {
+.searchPhotos-favorite {
   color: yellow;
 }
 
-img {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-footer {
+.searchPhotos-footer {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.image-container:hover {
-  transform: scale(1.1);
-}
-
-p {
+.searchPhotos-note {
   font-size: 30px;
   color: #777;
 }
+
+/* @media (min-width: 1200px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(5, 1fr); 
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+} */
+
+@media (min-width: 1200px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .searchPhotos-input {
+    width: 30vh;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 575px) {
+  .searchPhotos-main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 420px) and (max-width: 575px) {
+  .searchPhotos-input {
+    font-size: 15px;
+    width: 25vh;
+  }
+
+  .searchPhotos-button {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 420px) {
+  .searchPhotos-input {
+    font-size: 13px;
+    width: 20vh;
+  }
+
+  .searchPhotos-button {
+    font-size: 13px;
+    padding: 5px 5px;
+  }
+}
+/* .searchPhotos-main {
+  grid-template-columns: repeat(1, 1fr);
+} */
+
+/* For computers: 5 images per row */
+/* 100 / 5.5 (5 images + margins) */
+
+/* For tablets: 4 images per row */
+/* 100 / 4.5 (4 images + margins) */
+
+/* For mobile: 2 images per row */
+/* 100 / 2.2 (2 images + margins) */
+
+/* Extra large devices (large desktops, 1200px and up) */
+/* Large devices (desktops, 992px to 1199px) */
+/* Medium devices (tablets, 768px to 991px) */
+/* Small devices (landscape phones, 576px to 767px) */
+/* Extra small devices (phones, 320px to 575px) */

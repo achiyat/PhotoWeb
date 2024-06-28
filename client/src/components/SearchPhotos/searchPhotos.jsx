@@ -1,3 +1,4 @@
+// searchPhotos.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { getPhotoFromAPI } from "../../services/services";
 import { ModalBox } from "../ModalBox/modalBox";
@@ -14,12 +15,10 @@ export const SearchPhotos = (props) => {
   const [showFavorites, setShowFavorites] = useState(false);
   const [onOpenApp, setOnOpenApp] = useState(true);
 
-  // Function to open the modal with the selected image
   const openModal = (image) => {
     setSelectedImage(image);
   };
 
-  // Function to close the modal
   const closeModal = () => {
     setSelectedImage(null);
   };
@@ -39,7 +38,7 @@ export const SearchPhotos = (props) => {
   const fetchImages = async (word, _perPage) => {
     try {
       const response = await getPhotoFromAPI(
-        `http://localhost:5000/pixabay/images`,
+        "http://localhost:5000/pixabay/images",
         word,
         _perPage
       );
@@ -50,7 +49,6 @@ export const SearchPhotos = (props) => {
   };
 
   const handleSearch = () => {
-    // Reset the images and page when a new search is initiated
     setImages([]);
     setPerPage(10);
     fetchImages(searchRef.current.value, 10);
@@ -87,22 +85,31 @@ export const SearchPhotos = (props) => {
   }, [onOpenApp]);
 
   return (
-    <div>
-      <header>
-        <input ref={searchRef} type="text" placeholder="Search for photos..." />
-        <button onClick={handleSearch}>Search</button>
-        <button onClick={handleShowFavorites}>Show Favorites</button>
+    <div className="searchPhotos-container">
+      <header className="searchPhotos-header">
+        <input
+          className="searchPhotos-input"
+          ref={searchRef}
+          type="text"
+          placeholder="Search for photos..."
+        />
+        <button className="searchPhotos-button" onClick={handleSearch}>
+          Search
+        </button>
+        <button className="searchPhotos-button" onClick={handleShowFavorites}>
+          Show Favorites
+        </button>
       </header>
 
-      <main>
+      <main className="searchPhotos-main">
         {images.length === 0 && showFavorites ? (
-          <p>No favorite pictures found</p>
+          <p className="searchPhotos-note">No favorite pictures found</p>
         ) : (
           images.map((image) => (
-            <div key={image.id} className="image-container">
+            <div key={image.id} className="searchPhotos-imageContainer">
               <FontAwesomeIcon
                 icon={faStar}
-                className={`favorite-icon ${
+                className={`searchPhotos-favoriteIcon ${
                   favorites.some((favImage) => favImage.id === image.id)
                     ? "favorite"
                     : ""
@@ -112,9 +119,11 @@ export const SearchPhotos = (props) => {
               <img
                 src={image.webformatURL}
                 alt={image.tags}
-                width="200"
-                height="150"
                 onClick={() => openModal(image)}
+                className="searchPhotos-image"
+                style={{
+                  objectFit: image.webformatHeight > 600 ? "initial" : "cover",
+                }}
               />
             </div>
           ))
@@ -123,11 +132,15 @@ export const SearchPhotos = (props) => {
 
       {selectedImage && <ModalBox image={selectedImage} onClose={closeModal} />}
 
-      <footer>
+      <footer className="searchPhotos-footer">
         {!showFavorites ? (
-          <button onClick={handleLoadMore}>Load More Images</button>
+          <button className="searchPhotos-button" onClick={handleLoadMore}>
+            Load More Images
+          </button>
         ) : (
-          <button onClick={handleBackToImages}>Back</button>
+          <button className="searchPhotos-button" onClick={handleBackToImages}>
+            Back
+          </button>
         )}
       </footer>
     </div>
