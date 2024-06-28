@@ -109,11 +109,12 @@ export const SearchPhotos = (props) => {
             <div key={image.id} className="searchPhotos-imageContainer">
               <FontAwesomeIcon
                 icon={faStar}
-                className={`searchPhotos-favoriteIcon ${
-                  favorites.some((favImage) => favImage.id === image.id)
-                    ? "favorite"
-                    : ""
-                }`}
+                className="searchPhotos-favoriteIcon"
+                style={{
+                  color: favorites.some((favImage) => favImage.id === image.id)
+                    ? "yellow"
+                    : "white",
+                }}
                 onClick={() => toggleFavorite(image)}
               />
               <img
