@@ -1,5 +1,8 @@
 # 💻 Photo Search and Management App
 
+Here is a video presentation of the project:
+[Watch the video](https://github.com/achiyat/PhotoWeb/blob/main/client/src/Media/Video/presentation.mp4)
+
 The project was tested and scored: ⭐⭐⭐⭐⭐
 
 ## 📖 Overview
@@ -29,6 +32,14 @@ This project is a responsive web application built with React that allows users 
 - **Frontend:** React, FontAwesome for icons, CSS for styling
 - **Backend:** Node.js, Express
 - **API:** Pixabay API
+
+# Image Gallery
+
+<p align="center">
+  <img src="https://github.com/achiyat/PhotoWeb/blob/main/client/src/Media/Image/home.jpg" width="350"/>
+  <img src="https://github.com/achiyat/PhotoWeb/blob/main/client/src/Media/Image/favorites.jpg" width="350"/>
+  <img src="https://github.com/achiyat/PhotoWeb/blob/main/client/src/Media/Image/responsive.jpg" width="300"/>
+</p>
 
 ## 📥 Installation
 
@@ -72,6 +83,10 @@ This project is a responsive web application built with React that allows users 
 7. **Open the application:**
     - Navigate to `http://localhost:3000` in your web browser.
 
+## 📡 API
+
+The application uses the [Pixabay API](https://pixabay.com/api/docs/) to fetch photos. You need to sign up for an API key from Pixabay and add it to your `.env` file in the backend directory.
+
 ## 💡 Usage
 
 1. **Search for Photos:**
@@ -86,10 +101,6 @@ This project is a responsive web application built with React that allows users 
 
 4. **Load More Photos:**
     - Click the `Load More Images` button at the bottom to fetch and display more photos.
-
-## 📡 API
-
-The application uses the [Pixabay API](https://pixabay.com/api/docs/) to fetch photos. You need to sign up for an API key from Pixabay and add it to your `.env` file in the backend directory.
 
 ## 🗂️ Project Structure
 ```
