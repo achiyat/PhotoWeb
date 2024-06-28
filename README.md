@@ -33,7 +33,7 @@ This project is a responsive web application built with React that allows users 
 - **Backend:** Node.js, Express
 - **API:** Pixabay API
 
-# Image Gallery
+# 📸 Image Gallery
 
 <p align="center">
   <img src="https://github.com/achiyat/PhotoWeb/blob/main/client/src/Media/Image/home.jpg" width="350"/>
