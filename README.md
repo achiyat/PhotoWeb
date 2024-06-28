@@ -1,7 +1,7 @@
 # 💻 Photo Search and Management App
 
 Here is a video presentation of the project:
-[Watch the video](https://github.com/achiyat/PhotoWeb/blob/main/client/src/Media/Video/presentation.mp4)
+[Download the video](https://github.com/achiyat/PhotoWeb/raw/main/client/src/Media/Video/presentation.mp4)
 
 The project was tested and scored: ⭐⭐⭐⭐⭐
 
