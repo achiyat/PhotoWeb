@@ -1,4 +1,4 @@
-# 💻 Photo Search and Management App
+# 💻 Search Photo App
 
 Here is a video presentation of the project:
 [Watch the video](https://github.com/achiyat/PhotoWeb/raw/main/client/src/Media/Video/presentation.mp4)
