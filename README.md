@@ -1,7 +1,10 @@
 # 💻 Search Photo App
 
 Here is a video presentation of the project:
-[Watch the video](https://github.com/achiyat/PhotoWeb/raw/main/client/src/Media/Video/presentation.mp4)
+[Watch the video](https://resume-achiya-tzuriel.netlify.app/static/media/photoWeb_video.2496369a3bc5f1504c69.mp4)
+
+Or you can visit my website and watch it there:
+[Click here](https://resume-achiya-tzuriel.netlify.app/)
 
 The project was tested and scored: ⭐⭐⭐⭐⭐
 
@@ -139,6 +142,8 @@ PhotoWeb/
 📧 **Email:** [achiya308@gmail.com](mailto:achiya308@gmail.com)
 
 🔗 **LinkedIn:** [Achiya Tzuriel](https://www.linkedin.com/in/achiya-tzuriel/)
+
+🔗 **Personal website Link:** [Personal website](https://resume-achiya-tzuriel.netlify.app/)
 
 🔗 **Project Link:** [PhotoWeb](https://github.com/achiyat/PhotoWeb)
 
