@@ -1,7 +1,7 @@
 # 💻 Search Photo App
 
 Here is a video presentation of the project:
-[Watch the video](https://resume-achiya-tzuriel.netlify.app/static/media/photoWeb_video.2496369a3bc5f1504c69.mp4)
+[Watch the video](https://www.youtube.com/watch?v=bN1t9l0Nwrw)
 
 Or you can visit my website and watch it there:
 [Click here](https://resume-achiya-tzuriel.netlify.app/)
